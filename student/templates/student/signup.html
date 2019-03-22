@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>signup</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'student/login.css '%}">
+    <title>Student Login</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+</head>
+<body background="{% static 'student/images/book.jpg' %}">
+    <div class="container" id="signup">
+        <div class="form-group shadow p-3 mb-5 bg-white rounded" id="signup-form">
+            <form id="MyForm" action="signup/" method="POST">
+              {% csrf_token %}
+                    <label for=""> <strong>Name</strong> </label>
+                    <input type="text" name="username" id="" placeholder="Username">
+
+                    <label for="" ><strong>Password</strong></label>
+                    <input type="password" name="password" id="" placeholder="Password">
+
+                    <label for="" ><strong>Roll No</strong></label>
+                    <input type="text" name="id" id="" placeholder="Roll No">
+
+
+                    <label ><strong>Department</strong></label>
+                    <select class="custom-select" name="dept">
+                        <option selected>Select</option>
+                        <option value="Computer">Computer</option>
+                        <option value="IT">IT</option>
+                        <option value="Mechanical">Mechanical</option>
+                        <option value="Bio-Medical">Bio-Medical</option>
+                        <option value="Production">Production</option>
+                        <option value="Chemical">Chemical</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="EXTC">EXTC</option>
+                    </select>
+
+
+
+                    <label for="" ><strong>Phone No.</strong></label>
+                    <input type="text" name="phone" id="" placeholder="Phone No.">
+
+                    <label for=""><strong>Email Id</strong></label>
+                    <input type="email" name="email" id="" placeholder="Email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+                    <button type="submit" class="btn btn-primary" >Sign Up</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

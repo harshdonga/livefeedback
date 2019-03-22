@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <form action="response/" method="post">
+      {% csrf_token %}
+          <label>{{ r.0.fq1 }}
+            <input type="number" name="fq1" value="3"><br>
+          </label>
+          <label>{{ r.0.fq2 }}
+            <input type="number" name="fq2" value="3"><br>
+          </label>
+          <label>{{ r.0.fq3 }}
+            <input type="number" name="fq3" value="3"><br>
+          </label>
+          <label>Which Topic Wasnt Understood?
+            <select name="dropdown">
+              {% if r.0.topic1 != "" %}
+                <option value="{{ r.0.topic1 }}">{{ r.0.topic1 }}</option>
+              {% endif %}
+              {% if r.0.topic2 != "" %}
+                <option value="{{ r.0.topic2 }}">{{ r.0.topic2 }}</option>
+              {% endif %}
+              {% if r.0.topic3 != "" %}
+                <option value="{{ r.0.topic3 }}">{{ r.0.topic3 }}</option>
+              {% endif %}
+              {% if r.0.topic4 != "" %}
+                <option value="{{ r.0.topic4 }}">{{ r.0.topic4 }}</option>
+              {% endif %}
+              {% if r.0.topic5 != "" %}
+                <option value="{{ r.0.topic5 }}">{{ r.0.topic5 }}</option>
+              {% endif %}
+              <option value=""></option>
+            </select><br>
+          </label>
+          <label>Any Descriptive feedback from your side?
+            <input type="text" name="textinput" placeholder="Enter your message here">
+          </label>
+          <input type="submit" name="" value="Submit response">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+#teacher-form{
+    margin-left:80px;
+    margin-right: 80px;
+    margin-top: 30px;
+
+}
+.container{
+    margin-left:400px;
+    margin-right: 400px;
+
+    width: 600px;
+}
+label{
+    font-size: 0.75em;
+}
+body{
+    font-size: 30px;
+}
+p{
+    text-align: center;
+}
+form{
+    margin: 10px;
+}

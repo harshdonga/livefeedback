@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+		<link rel="icon" href="{% static 'student/images/Feedback.png' %}">
+<head>
+
+	<title>Feedback Form</title>
+
+	<!-- Meta Tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Notable Feedback Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs Sign up Web Templates,
+ Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!--// Meta Tags -->
+	<!-- Stylesheets -->
+	<link href="{% static 'student/font-awesome.css' %}" rel="stylesheet">
+	<link href="{% static 'student/style.css' %}" rel='stylesheet' type='text/css' />
+	<!--// Stylesheets -->
+	<!--fonts-->
+	<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+	<!--//fonts-->
+	<link rel="stylesheet" href="{% static 'student/range1.css' %}'">
+</head>
+
+<body background="{% static 'student/images/book.jpg' %}">
+	<!--background-->
+	<h1> Feedback Form </h1>
+	<div class="feedback-w3layouts">
+		<form action="response/" method="post">
+			{% csrf_token %}
+					<div class="">
+						<label>
+							<i class="fa fa-user" aria-hidden="true"></i>Q1. {{ r.0.fq1 }}</label>
+							<div class="slidecontainer">
+								<input type="range" min="1" max="5" value="2.5" class="slider" id="myRange" name="fq1">
+							  </div>
+					</div>
+
+					<div class="">
+						<label>
+							<i class="fa fa-user" aria-hidden="true"></i>Q2. {{ r.0.fq2 }}</label>
+							<div class="slidecontainer">
+								<input type="range" min="1" max="5" value="2.5" class="slider" id="myRange" name="fq2">
+							  </div>
+					</div>
+					<div class="">
+						<label>
+							<i class="fa fa-user" aria-hidden="true"></i>Q3. {{ r.0.fq3 }}</label>
+							<div class="slidecontainer">
+								<input type="range" min="1" max="5" value="2.5" class="slider" id="myRange" name="fq3">
+							  </div>
+					</div>
+					<div class="clear"> </div>
+					<div class="form-option-w3-agileits">
+						<label>
+							<i class="fa fa-comments" aria-hidden="true"></i>Topics Doubtful(if Any?)</label>
+						<select class="form-control" name="dropdown">
+								{% if r.0.topic1 != "" %}
+									<option value="{{ r.0.topic1 }}">{{ r.0.topic1 }}</option>
+								{% endif %}
+								{% if r.0.topic2 != "" %}
+									<option value="{{ r.0.topic2 }}">{{ r.0.topic2 }}</option>
+								{% endif %}
+								{% if r.0.topic3 != "" %}
+									<option value="{{ r.0.topic3 }}">{{ r.0.topic3 }}</option>
+								{% endif %}
+								{% if r.0.topic4 != "" %}
+									<option value="{{ r.0.topic4 }}">{{ r.0.topic4 }}</option>
+								{% endif %}
+								{% if r.0.topic5 != "" %}
+									<option value="{{ r.0.topic5 }}">{{ r.0.topic5 }}</option>
+								{% endif %}
+								<option value=""></option>
+						</select>
+					</div>
+					<div class="text-field-agileits-w3layouts">
+						<label>
+							<i class="fa fa-comments" aria-hidden="true"></i> Describe Feedback :</label>
+							<input type="text" name="textinput" placeholder="Enter the Description" required="" />
+					</div>
+					<div class="clear"> </div>
+					<input type="submit" value="Submit">
+		</form>
+	</div>
+	<!--copyright-->
+	<div class="copy-wthree">
+		<p>© 2019 Feedback Generator . All Rights Reserved | Design by Team TroubleShoot
+
+		</p>
+	</div>
+	<!--//copyright-->
+	<script>
+		var slider = document.getElementById("myRange");
+		var output = document.getElementById("demo");
+		output.innerHTML = slider.value; // Display the default slider value
+
+		// Update the current slider value (each time you drag the slider handle)
+		slider.oninput = function() {
+		  output.innerHTML = this.value;
+		}
+		</script>
+
+</body>
+
+</html>

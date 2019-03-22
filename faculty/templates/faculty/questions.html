@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form action="submit/" method="post">
+      {% csrf_token %}
+        <label>Question 1:
+          <input type="text" name="fq1" value="Clarity About the Topic"><br>
+        </label>
+        <label>Question 2:
+          <input type="text" name="fq2" value="Regularity And Punctuality of the Faculty "><br>
+        </label>
+        <label>Question 3:.
+          <input type="text" name="fq3" value="Pace Of Teaching"><br>
+        </label>
+        <label>Topic 1:
+          <input type="text" name="topic1" value=""><br>
+        </label>
+        <label>Topic 2:
+          <input type="text" name="topic2" value=""><br>
+        </label>
+        <label>Topic 3:
+          <input type="text" name="topic3" value=""><br>
+        </label>
+        <label>Topic 4:
+          <input type="text" name="topic4" value=""><br>
+        </label>
+        <label>Topic 5:
+          <input type="text" name="topic5" value=""><br>
+        </label>
+        <input type="submit" name="" value="SUbmit question">
+    </form>
+  </body>
+</html>

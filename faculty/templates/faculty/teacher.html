@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h2>Review Topic For Today : {{ maxstr }}</h2>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/frappe-charts@1.1.0/dist/frappe-charts.min.iife.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Teacher Portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<body style="font-weight: bold;background:#E6E6FA">
+    <button onclick="myFunction()" class="btn btn-primary" style="margin:30px auto 0px 600px;">Post Questions</button>
+
+    <div id="myDIV" class="form-group shadow p-3 mb-5 bg-white rounded container" style="display:none;">
+        <form action="submit/" method="post" style="margin-top:20px;
+        border: 1px  rgb(167, 165, 165);
+        border-radius: 20px;
+        padding: 40px;">
+          {% csrf_token %}
+                <p>Details</p>
+
+                <label for=""><strong>Question 1</strong></label>
+                <input type="text" name="fq1" id="" placeholder="Optional">
+
+                <label for=""><strong>Question 2</strong></label>
+                <input type="text" name="fq2" id="" placeholder="Optional">
+
+                <label for=""><strong>Question 3</strong></label>
+                <input type="text" name="fq3" id="" placeholder="Optional">
+
+                <label for=""><strong>Topic 1</strong></label>
+                <input type="text" name="topic1" id="" placeholder="Topic 1">
+
+                <label for=""><strong>Topic 2</strong></label>
+                <input type="text" name="topic2" id="" placeholder="Topic 2">
+
+                <label for=""><strong>Topic 3</strong></label>
+                <input type="text" name="topic3" id="" placeholder="Topic 3">
+
+                <label for=""><strong>Topic 4</strong></label>
+                <input type="text" name="topic4" id="" placeholder="Topic 4">
+
+                <label for=""><strong>Topic 5</strong></label>
+                <input type="text" name="topic5" id="" placeholder="Topic 5">
+
+                <button type="submit" class="btn btn-primary" >Submit</button>
+        </form>
+    </div>
+    <p  id="p1"></p>
+
+
+
+
+
+
+
+
+
+    <button onclick="myFunction1();myFunction2()" class="btn btn-primary" style="margin:30px auto 0px 590px;">Display Response</button>
+
+    <div id="chart"></div>
+    <script id="sc" >
+        let chart = new frappe.Chart( "#chart", { // or DOM element
+    data: {
+      labels: {{ c }},
+
+      datasets: [
+        {
+          name: "Positivity", chartType: 'line',
+          values: {{posv}}
+        },
+        {
+          name: "Q3", chartType: 'bar',
+          values: {{q3}}
+        },
+        {
+          name: "Q2", chartType: 'bar',
+          values: {{q2}}
+        },
+        {
+          name: "Q1", chartType: 'line',
+          values: {{q1}}
+        }
+      ],
+
+      yMarkers: [{ label: "Marker", value: 5,
+        options: { labelPos: 'left' }}],
+      yRegions: [{ label: "Region", start: 0, end: 0,
+        options: { labelPos: 'right' }}]
+    },
+
+    title: "Question one",
+    type: 'axis-mixed', // or 'bar', 'line', 'pie', 'percentage'
+    height: 300,
+    colors: ['black','purple', '#ffa3ef', 'light-blue'],
+
+    tooltipOptions: {
+      formatTooltipX: d => (d + '').toUpperCase(),
+      formatTooltipY: d => d + ' pts',
+    }
+  });
+    </script>
+
+    <p style="display:none;" id="p2"></p>
+
+    <div id="chart2"></div>
+    <script id="sc2" >
+        let chart = new frappe.Chart( "#chart2", { // or DOM element
+          // console.log({{ posv }});
+          // console.log({{ q3 }});
+    data: {
+      labels: {{ c }},
+
+      datasets: [
+        {
+          name: "Positive reviews", chartType: 'bar', onkeyup=""
+          values: {{ posv }}
+
+        },
+        {
+          name: "Negative Reviews", chartType: 'bar',
+          values: {{ q3 }}
+        }
+      ],
+
+      yMarkers: [{ label: "Marker", value: 5,
+        options: { labelPos: 'left' }}],
+      yRegions: [{ label: "Region", start: 0, end: 3,
+        options: { labelPos: 'right' }}]
+    },
+    print({{ posv }})
+    print({{ q3 }})
+    title: "Review Chart",
+    type: 'axis-mixed', // or 'bar', 'line', 'pie', 'percentage'
+    height: 300,
+    colors: ['purple', '#ffa3ef', 'light-blue'],
+
+    tooltipOptions: {
+      formatTooltipX: d => (d + '').toUpperCase(),
+      formatTooltipY: d => d + ' pts',
+    }
+  });
+    </script>
+
+    <p style="display:none;" id="p3"></p>
+
+
+
+    <script>
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        var y = document.getElementById("p1");
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
+        }
+        }
+        function myFunction1(){
+        var a = document.getElementById("chart");
+        if (a.style.display === "none") {
+            a.style.display = "block";
+        } else {
+            a.style.display = "none";
+        }
+
+
+        var z = document.getElementById("p2");
+        if (z.style.display === "none") {
+            z.style.display = "block";
+        } else {
+            z.style.display = "none";
+        }
+        }
+
+        function myFunction2(){
+        var b = document.getElementById("chart2");
+        if (b.style.display === "none") {
+            b.style.display = "block";
+        } else {
+            b.style.display = "none";
+        }
+
+
+        var d = document.getElementById("p3");
+        if (d.style.display === "none") {
+            d.style.display = "block";
+        } else {
+            d.style.display = "none";
+        }
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>
